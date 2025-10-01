@@ -52,8 +52,6 @@ $headers = @{
     "Sec-Ch-Ua"      = "\"Chromium\";v=\"139\", \"Not;A=Brand\";v=\"99\""
     "Sec-Ch-Ua-Mobile" = "?0"
     "Sec-Ch-Ua-Platform" = "\"Windows\""
-    # If required, set Cookie string here
-    # "Cookie" = "T=...; at=..."
 }
 
 $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $body -ContentType "application/json"
