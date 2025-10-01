@@ -63,27 +63,29 @@ This API facilitates resending OTP requests to phone numbers via the PW.live pla
 
 ### Usage Example (PowerShell)
 ```powershell
-$uri = "https://api.penpencil.co/v1/users/resend-otp?smsType=0"
+# PW.live (Penpencil) Get OTP API
+$uri = "https://api.penpencil.co/v1/users/get-otp?smsType=0&fallback=true"
 
 $body = @{
-    mobile         = "<PHONE_NUMBER>"        # Replace with user’s mobile number
-    organizationId = "5eb393ee95fab7468a79d189"
+  username       = "<PHONE_NUMBER>"           # Replace with user’s mobile number
+  countryCode    = "+91"                      # Replace with relevant country code
+  organizationId = "5eb393ee95fab7468a79d189"
 } | ConvertTo-Json
 
 $headers = @{
-    "Origin"         = "https://www.pw.live"
-    "Referer"        = "https://www.pw.live/"
-    "User-Agent"     = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
-    "Sec-Ch-Ua"      = "\"Not=A?Brand\";v=\"24\", \"Chromium\";v=\"140\""
-    "Sec-Ch-Ua-Mobile" = "?0"
-    "Sec-Ch-Ua-Platform" = "\"Windows\""
-    "Content-Type"   = "application/json"
-    "Accept"         = "*/*"
-    "Accept-Language" = "en-GB,en;q=0.9"
-    "Sec-Fetch-Site" = "cross-site"
-    "Sec-Fetch-Mode" = "cors"
-    "Sec-Fetch-Dest" = "empty"
-    "Randomid"       = "2ade3b08-62fe-4507-9440-3b361783061c"
+  "Origin"           = "https://www.pw.live"
+  "Referer"          = "https://www.pw.live/"
+  "User-Agent"       = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+  "Sec-Ch-Ua"        = '"Not=A?Brand";v="24", "Chromium";v="140"'
+  "Sec-Ch-Ua-Mobile" = "?0"
+  "Sec-Ch-Ua-Platform" = '"Windows"'
+  "Content-Type"     = "application/json"
+  "Accept"           = "*/*"
+  "Accept-Language"  = "en-GB,en;q=0.9"
+  "Sec-Fetch-Site"   = "cross-site"
+  "Sec-Fetch-Mode"   = "cors"
+  "Sec-Fetch-Dest"   = "empty"
+  "Randomid"         = "43c99813-ddf0-429e-834d-24ffb7eef4c0"   # Generate a new UUID per request if needed
 }
 
 $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $body -ContentType "application/json"
