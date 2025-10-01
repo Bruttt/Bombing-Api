@@ -83,7 +83,7 @@ $headers = @{
     "Sec-Fetch-Site" = "cross-site"
     "Sec-Fetch-Mode" = "cors"
     "Sec-Fetch-Dest" = "empty"
-    "Randomid"       = "2ade3b08-62fe-4507-9440-3b361783061c"   # This looks like a UUID; you may regenerate dynamically
+    "Randomid"       = "2ade3b08-62fe-4507-9440-3b361783061c"
 }
 
 $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $body -ContentType "application/json"
